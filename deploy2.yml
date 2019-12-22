@@ -1,1 +1,14 @@
-
+- hosts: localhost
+  vars:
+    ImageName: ""
+    Namespace: ""
+    imageTag: ""
+  #remote_user: ansible
+  #become: true
+  become_user: true
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Get Namespace {{ Namespace }}
+      command: "kubectl version"
+      ignore_errors: yes
