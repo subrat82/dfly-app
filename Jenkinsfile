@@ -46,4 +46,4 @@ node{
   //    currentBuild.result = 'FAILURE'
   //  }
 //}
-
+}
