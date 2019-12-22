@@ -4,21 +4,21 @@
     Namespace: ""
     imageTag: ""
   #remote_user: ansible
-  #become: true
+  become: true
   become_user: true
   gather_facts: no
   connection: local
   tasks:
     - name: Get Namespace {{ Namespace }}
-      command: "kubectl get pods --all-namespaces"
+      command: "/usr/local/bin/kubectl get pods --all-namespaces"
       ignore_errors: yes
     - name: Check helm version
       command: "helm version"
     - name: Kubernetes Run
-      command: "kubectl run kubernetes-container --replicas=2 --image=subratit/projects-16th-nov:latest --port=8181"
+      command: "/usr/local/bin/kubectl run kubernetes-container --replicas=2 --image=subratit/projects-16th-nov:latest --port=8181"
       #delegate_to: localhost
       ignore_errors: yes
     - name: Kubernetes Expose
-      command: "kubectl expose deployment kubernetes-container --type=LoadBalancer --port=82 --target-port=8181 --name=kubernetes-container"
+      command: "/usr/local/bin/kubectl expose deployment kubernetes-container --type=LoadBalancer --port=82 --target-port=8181 --name=kubernetes-container"
       delegate_to: localhost
       ignore_errors: yes
