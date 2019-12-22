@@ -13,7 +13,7 @@
       command: "/usr/local/bin/kubectl get pods --all-namespaces"
       ignore_errors: yes
     - name: Check helm version
-      command: "helm version"
+      command: "/usr/local/bin/helm version"
     - name: Kubernetes Run
       command: "/usr/local/bin/kubectl run kubernetes-container --replicas=2 --image=subratit/projects-16th-nov:latest --port=8181"
       #delegate_to: localhost
