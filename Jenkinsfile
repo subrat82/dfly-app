@@ -3,6 +3,7 @@ node{
   def ImageName = "subratit/projects-16th-nov"
   def ImageTag = "latest02"
   def Creds	= "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd"
+  def Creds = "Sasmita123*"
 
   //try{
   stage('Checkout'){
