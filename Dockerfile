@@ -18,17 +18,17 @@ RUN apt-get install -y vim wget dialog net-tools
 RUN apt-get install -y nginx
 
 # Remove the default Nginx configuration file
-#RUN rm -v /etc/nginx/nginx.conf
+RUN rm -v /etc/nginx/nginx.conf
 
 # Copy a configuration file from the current directory
-#ADD nginx.conf /etc/nginx/
+ADD nginx.conf /etc/nginx/
 
 RUN mkdir /etc/nginx/logs
 
 # Add a sample index file
 #ADD index.html /www/data/
 #RUN pwd
-#ADD index.jsp /www/data/
+ADD index.jsp /www/data/
 
 # Append "daemon off;" to the beginning of the configuration
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
