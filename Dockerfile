@@ -29,7 +29,7 @@ RUN mkdir /etc/nginx/logs
 #ADD index.html /www/data/
 #RUN pwd
 WORKDIR /Users/subrat/.jenkins/workspace/pipeline_dfly-app
-ADD index.jsp /www/data/
+ADD index.html /www/data/
 
 # Append "daemon off;" to the beginning of the configuration
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
