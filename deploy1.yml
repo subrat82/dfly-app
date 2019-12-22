@@ -19,5 +19,5 @@
       ignore_errors: yes
     - name: Kubernetes Expose
       command: "kubectl expose deployment kubernetes-container --type=LoadBalancer --port=82 --target-port=8181 --name=kubernetes-container"
-      #delegate_to: localhost
+      delegate_to: localhost
       ignore_errors: yes
