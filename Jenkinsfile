@@ -3,7 +3,7 @@ node{
   def ImageName = "subratit/projects-16th-nov"
   def ImageTag = "latest"
   //def Creds	= "b7569972-e8eb-4259-8bb6-db4c249b0197"
-  try{
+  //try{
   stage('Checkout'){
       
     git branch: 'master',
@@ -41,8 +41,8 @@ node{
         //sh "ansible-playbook /var/lib/jenkins/ansible/sasmita-deploy/deploy1.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} "
     }
   } 
-  catch (err) {
-      currentBuild.result = 'FAILURE'
-    }
+  //catch (err) {
+  //    currentBuild.result = 'FAILURE'
+  //  }
 //}
 
