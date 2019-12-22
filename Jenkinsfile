@@ -1,7 +1,7 @@
 node{
   def Namespace = "default"
   def ImageName = "subratit/projects-16th-nov"
-  def imageTag = "latest"
+  def ImageTag = "latest"
   def Creds	= "b7569972-e8eb-4259-8bb6-db4c249b0197"
   try{
   stage('Checkout'){
@@ -28,7 +28,7 @@ node{
       sh "echo docker login localhost:8080"
       withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
       sh "echo hello"
-      sh "/usr/local/bin/docker build -t ${ImageName}:${imageTag} ."
+      sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
       sh "echo hello1"
       sh "/usr/local/bin/docker push ${ImageName}"
       sh "docker hello2"
