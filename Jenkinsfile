@@ -42,7 +42,7 @@ node{
     stage('Deploy on K8s'){
         sh "/usr/local/bin/ansible localhost -m ping"
         sh "echo ansible ran successfully"
-        sh "ansible-playbook /usr/local/bin/ansible/sasmita-deploy/deploy1.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} "
+        sh "ansible-playbook /usr/local/bin/ansible/sasmita-deploy/deploy1.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${ImageTag} "
     }
   //} 
   //catch (err) {
