@@ -28,7 +28,7 @@ node{
   stage('Docker Build, Push'){
       sh "/usr/local/bin/docker --version"
       sh "echo docker login localhost:8080"
-      withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
+      //withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
       //withDockerRegistry([credentialsId: "${Creds}, url: 'https://hub.docker.com/'"]) {
       sh "echo hello"
       sh "pwd"
@@ -36,7 +36,7 @@ node{
       sh "echo build successfully"
       //sh "/usr/local/bin/docker push ${ImageName}"
       //sh "docker hello2"
-         }
+      //   }
 
     }
     stage('Deploy on K8s'){
