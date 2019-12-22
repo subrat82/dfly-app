@@ -28,6 +28,7 @@ node{
       sh "echo docker login localhost:8080"
       //withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
       sh "echo hello"
+      sh "pwd"
       sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
       sh "echo hello1"
       sh "/usr/local/bin/docker push ${ImageName}"
