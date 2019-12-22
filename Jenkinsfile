@@ -42,7 +42,9 @@ node{
     stage('Deploy on K8s'){
         sh "/usr/local/bin/ansible localhost -m ping"
         sh "echo ansible ran successfully"
-        sh "/usr/local/bin/ansible-playbook -vvv /Users/subrat/.jenkins/workspace/pipeline_dfly-app/deploy2.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${ImageTag} --extra-vars ansible_user_pass=Sasmita123* "
+        //sh "/usr/local/bin/ansible-playbook -vvv /Users/subrat/.jenkins/workspace/pipeline_dfly-app/deploy2.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${ImageTag} --extra-vars ansible_user_pass=Sasmita123* "
+        sh "/usr/local/bin/ansible-playbook -vvv /Users/subrat/.jenkins/workspace/pipeline_dfly-app/deploy2.yml --extra-vars ImageName=${ImageName} --extra-vars imageTag=${ImageTag}"
+
     }
   //} 
   //catch (err) {
