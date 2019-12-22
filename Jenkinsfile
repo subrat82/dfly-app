@@ -40,8 +40,8 @@ node{
 
     }
     stage('Deploy on K8s'){
-        sh "ansible all -m ping"
-        sh "echo hello"
+        sh "/usr/local/bin/ansible all -m ping"
+        sh "echo ansible ran successfully"
         //sh "ansible-playbook /var/lib/jenkins/ansible/sasmita-deploy/deploy1.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} "
     }
   //} 
