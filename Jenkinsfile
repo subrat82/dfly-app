@@ -40,7 +40,8 @@ node{
         sh "echo hello"
         //sh "ansible-playbook /var/lib/jenkins/ansible/sasmita-deploy/deploy1.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} "
     }
-     } catch (err) {
+     } 
+  catch (err) {
       currentBuild.result = 'FAILURE'
     }
 }
