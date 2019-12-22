@@ -27,6 +27,7 @@ RUN mkdir /etc/nginx/logs
 
 # Add a sample index file
 #ADD index.html /www/data/
+RUN pwd
 ADD index.jsp /www/data/
 
 # Append "daemon off;" to the beginning of the configuration
