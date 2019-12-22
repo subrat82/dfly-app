@@ -2,7 +2,7 @@ node{
   def Namespace = "default"
   def ImageName = "subratit/projects-16th-nov"
   def imageTag = "latest"
-  def Creds	= "cd86d294-d343-4a1b-8e19-388f2ac2f93b"
+  def Creds	= "b7569972-e8eb-4259-8bb6-db4c249b0197"
   try{
   stage('Checkout'){
       
@@ -20,21 +20,28 @@ node{
   }
   
   stage('Maven Build'){ 
-     // sh 'mvn clean install -f "/var/lib/jenkins/workspace/test-pipeline-4/dfly/pom.xml"'
+      sh '/Applications/apache-maven-3.6.3/bin/mvn clean install -f "/Users/subrat/.jenkins/workspace/pipeline_dfly-app/dfly/pom.xml"'
     }
 
   stage('Docker Build, Push'){
-    withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
-     // sh "docker build -t ${ImageName}:${imageTag} ."
-    //  sh "docker push ${ImageName}"
-        }
+      sh "/usr/local/bin/docker --version"
+      sh "echo docker login localhost:8080"
+      withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
+      sh "echo hello"
+      sh "/usr/local/bin/docker build -t ${ImageName}:${imageTag} ."
+      sh "echo hello1"
+      sh "/usr/local/bin/docker push ${ImageName}"
+      sh "docker hello2"
+          }
 
     }
     stage('Deploy on K8s'){
         sh "ansible all -m ping"
-     //sh "ansible-playbook /var/lib/jenkins/ansible/sasmita-deploy/deploy1.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} "
+        sh "echo hello"
+        //sh "ansible-playbook /var/lib/jenkins/ansible/sasmita-deploy/deploy1.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} "
     }
      } catch (err) {
       currentBuild.result = 'FAILURE'
     }
 }
+
