@@ -4,8 +4,8 @@
     Namespace: ""
     imageTag: ""
   #remote_user: ansible
-  #become: true
-  become_user: true
+  become: true
+  #become_user: true
   gather_facts: no
   connection: local
   tasks:
