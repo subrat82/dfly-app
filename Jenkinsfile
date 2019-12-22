@@ -8,7 +8,7 @@ node{
       
     git branch: 'master',
     credentialsId: 'cd86d294-d343-4a1b-8e19-388f2ac2f93b',
-    url: 'https://github.com/sasmita016/dfly-app.git'
+    url: 'https://github.com/subrat82/dfly-app.git'
       
       
       //git 'https://github.com/sasmita016/dfly-app.git'
