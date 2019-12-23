@@ -10,7 +10,7 @@
   connection: local
   tasks:
     - name: Create Namespace 
-      command: "/usr/local/bin/kubectl create namespace local-namespace-dfly"
+      command: "/usr/local/bin/kubectl create ns local-namespace-dfly"
       ignore_errors: yes
     - name: Get Namespace {{ Namespace }}
       command: "/usr/local/bin/kubectl get pods --all-namespaces"
