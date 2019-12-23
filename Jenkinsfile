@@ -37,7 +37,7 @@ node{
       sh "echo build successfully"
       sh "/usr/local/bin/docker push ${ImageName}"
       //sh "docker hello2"
-        }
+      //   }
 
     }
     stage('Deploy on K8s'){
