@@ -10,7 +10,7 @@
   connection: local
   tasks:
     - name: Create Namespace 
-      command: "/usr/local/bin/kubectl get ns"
+      command: "/usr/local/bin/kubectl get pod -n kube-system"
       ignore_errors: yes
     - name: Get Namespace {{ Namespace }}
       command: "/usr/local/bin/kubectl get pods --all-namespaces"
