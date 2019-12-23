@@ -9,9 +9,6 @@
   gather_facts: no
   connection: local
   tasks:
-    - name: Create Namespace 
-      command: "/usr/local/bin/kubectl create ns local-namespace-dfly"
-      ignore_errors: yes
     - name: Get Namespace {{ Namespace }}
       command: "/usr/local/bin/kubectl get pods --all-namespaces"
       ignore_errors: yes
