@@ -12,6 +12,7 @@ node{
   }
 
     stage('Deploy on K8s'){
+        sh "id"
         sh "/usr/local/bin/ansible localhost -m ping"
         sh "echo ansible ran successfully"
         sh "/usr/local/bin/ansible-playbook -v /Users/subrat/.jenkins/workspace/pipeline_dfly-app/deploy1.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${ImageTag} --extra-vars ansible_sudo_pass=Sasmita123* "
