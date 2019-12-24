@@ -1,47 +1,51 @@
-pipeline {
-  environment {
-    registry = "subratit/projects-16th-dec"
-    registryCredential = '076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd'
-    //registryCredential = 'dockeradmin'
-    dockerImage = ''
+node{
+  def Namespace = "default"
+  def ImageName = "subratit/projects-16th-nov"
+  def ImageTag = "latest02"
+  def Creds	= "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd"
+
+
+  //try{
+  stage('Checkout'){
+      
+    git branch: 'master',
+    credentialsId: 'cd86d294-d343-4a1b-8e19-388f2ac2f93b',
+    url: 'https://github.com/subrat82/dfly-app.git'
+      
+      
+      //git 'https://github.com/sasmita016/dfly-app.git'
+      sh "git rev-parse --short HEAD > .git/commit-id"
+      //imageTag= readFile('.git/commit-id').trim()
+
+
+
   }
-  agent any
-  stages {
-    stage(‘Checkout’) {
-       steps {
-         git "https://github.com/subrat82/dfly-app.git"
-         sh 'echo  "Sample checkout passed"'
-       }
+  
+  stage('Maven Build'){ 
+      sh '/Applications/apache-maven-3.6.3/bin/mvn clean install -f "/Users/subrat/.jenkins/workspace/pipeline_dfly-app/dfly/pom.xml"'
     }
-    stage(‘Build’) {
-       steps {
-         sh 'echo  "Sample build passed"'
-       }
+
+  stage('Docker Build, Push'){
+      sh "/usr/local/bin/docker --version"
+      sh "echo docker login localhost:8080"
+      //withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
+     // withDockerRegistry([credentialsId: "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd", url: 'https://index.docker.io/v1/']) {
+      sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
+      sh "echo build successfully"
+      sh "/usr/local/bin/docker push ${ImageName}"
+     //   }
+
     }
-    stage(‘Test’) {
-      steps {
-        sh 'echo  "Sample test passed"'
-      }
+    stage('Deploy on K8s'){
+        sh "/usr/local/bin/ansible localhost -m ping"
+        sh "echo ansible ran successfully"
+        sh "/usr/local/bin/ansible-playbook -v /Users/subrat/.jenkins/workspace/pipeline_dfly-app/deploy1.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${ImageTag} --extra-vars ansible_sudo_pass=Sasmita123* "
+        //sh "/usr/local/bin/ansible-playbook -vvv /Users/subrat/.jenkins/workspace/pipeline_dfly-app/deploy1.yml --extra-vars ImageName=${ImageName} --extra-vars imageTag=${ImageTag}"
+
     }
-    stage(‘Building’) {
-      steps{
-        script {
-          dockerImage = docker.build registry
-          sh 'echo  "Sample build passed"'
-        }
-      }
-    }
-    stage(‘Deploy’) {
-      steps{
-         script {
-            dockerImage.push()
-            sh 'docker ps'
-            docker.withRegistry( '', registryCredential ) {
-            //dockerImage.push()
-            sh 'echo  "Sample deploy passed"'
-          }
-        }
-      }
-    }
-  }
+  //} 
+  //catch (err) {
+  //    currentBuild.result = 'FAILURE'
+  //  }
+//}
 }
