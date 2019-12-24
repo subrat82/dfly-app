@@ -12,3 +12,6 @@
     - name: Get Namespace {{ Namespace }}
       command: "/usr/local/bin/kubectl version"
       ignore_errors: yes
+    - name: Get PO {{ Namespace }}
+      command: "/usr/local/bin/kubectl get po -n default"
+      ignore_errors: yes
