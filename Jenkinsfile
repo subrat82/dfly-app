@@ -31,7 +31,7 @@ node{
       //withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
     
     withDockerServer([uri: "tcp://127.0.0.1:2375"]) {
-    withDockerRegistry([credentialsId: "${Creds}", url: "'https://index.docker.io/v1/"]) {
+    withDockerRegistry([credentialsId: "${Creds}", url: "https://index.docker.io/v1/"]) {
 
      //withDockerRegistry(credentialsId: "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd", url: '') {
       //sh 'docker login -u "subratit" -p "Sasmita123*" docker.io'
