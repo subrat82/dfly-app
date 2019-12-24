@@ -32,7 +32,7 @@ node{
      // withDockerRegistry([credentialsId: "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd", url: 'https://index.docker.io/v1/']) {
       //sh 'docker login -u "subratit" -p "Sasmita123*" docker.io'
       //sh 'docker login --username=subratit --email=subratit@gmail.com docker.io'
-      sh 'docker login -u subratit'
+      sh 'docker login -u subratit docker.io'
       sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
       sh "echo build successfully"
       sh "/usr/local/bin/docker push ${ImageName}"
