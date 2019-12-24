@@ -10,14 +10,15 @@ node{
     credentialsId: 'cd86d294-d343-4a1b-8e19-388f2ac2f93b',
     url: 'https://github.com/subrat82/dfly-app.git'
   }
-
-    stage('Deploy on K8s'){
-        sh "id"
-        sh "/usr/local/bin/ansible localhost -m ping"
-        sh "echo ansible ran successfully"
-        //sh "/usr/local/bin/ansible-playbook -v /Users/subrat/.jenkins/workspace/pipeline_dfly-app/deploy1.yml  --user=root --extra-vars ImageName=${ImageName} --extra-vars imageTag=${ImageTag} --extra-vars ansible_sudo_pass=Sasmita123* "
-        //sh "/usr/local/bin/ansible-playbook -vvv /Users/subrat/.jenkins/workspace/pipeline_dfly-app/deploy1.yml --extra-vars ImageName=${ImageName} --extra-vars imageTag=${ImageTag}"
-        sh "/usr/local/bin/ansible-playbook -vv /Users/subrat/.jenkins/workspace/pipeline_dfly-app/deploy1.yml --extra-vars ImageName=${ImageName} --extra-vars imageTag=${ImageTag} --extra-vars ansible_sudo_pass=Sasmita123*"
+  stage('Docker Build, Push'){
+      sh "/usr/local/bin/docker --version"
+      sh "echo docker login localhost:8080"
+      //withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
+      withDockerRegistry([credentialsId: "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd", url: 'https://index.docker.io/v1/']) {
+      sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
+      sh "echo build successfully"
+      sh "/usr/local/bin/docker push ${ImageName}"
+        }
 
     }
 }
