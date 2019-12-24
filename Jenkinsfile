@@ -34,8 +34,10 @@ pipeline {
     stage(‘Deploy’) {
       steps{
          script {
-            docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
+            sh 'docker ps'
+            docker.withRegistry( '', registryCredential ) {
+            //dockerImage.push()
             sh 'echo  "Sample deploy passed"'
           }
         }
