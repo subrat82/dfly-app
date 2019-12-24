@@ -41,10 +41,10 @@ node{
       sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
       sh "echo build successfully"
       sh "/usr/local/bin/docker push ${ImageName}"
-        }
-    }
-
+      //  }
     //}
+
+    }
     stage('Deploy on K8s'){
         sh "/usr/local/bin/ansible localhost -m ping"
         sh "echo ansible ran successfully"
