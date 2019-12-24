@@ -44,7 +44,7 @@ node{
         }
     }
 
-    }
+    //}
     stage('Deploy on K8s'){
         sh "/usr/local/bin/ansible localhost -m ping"
         sh "echo ansible ran successfully"
