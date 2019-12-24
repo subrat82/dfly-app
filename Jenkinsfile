@@ -11,18 +11,22 @@ node{
     credentialsId: 'cd86d294-d343-4a1b-8e19-388f2ac2f93b',
     url: 'https://github.com/subrat82/dfly-app.git'
   }
-  stage('Docker Build, Push'){
-      sh "/usr/local/bin/docker --version"
-      sh "echo docker login localhost:8080"
-      sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
-      sh "echo build successfully"
-      sh "/usr/local/bin/docker push ${ImageName}"
-      sh "echo push successfully"
-      withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) 
+  //stage('Docker Build, Push'){
+    //  sh "/usr/local/bin/docker --version"
+      //sh "echo docker login localhost:8080"
+      //sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
+      //sh "echo build successfully"
+      //sh "/usr/local/bin/docker push ${ImageName}"
+      //sh "echo push successfully"
+      //withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) 
       //withDockerRegistry([credentialsId: "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd", url: 'https://index.docker.io/v1/']) {
       //withDockerRegistry([url: 'https://index.docker.io/v1/']) {
 
-        
+  stage('Docker Build, Push'){
+    withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
+      sh "docker build -t ${ImageName}:${imageTag} ."
+      sh "docker push ${ImageName}"
+        }
 
     }
 }
