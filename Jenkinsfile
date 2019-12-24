@@ -2,8 +2,8 @@ node{
   def Namespace = "default"
   def ImageName = "subratit/projects-16th-dec"
   def ImageTag = "latest"
-  //def Creds	= "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd"
-  def Creds ="c3VicmF0aXQ6U2FzbWl0YTEyMyo"
+  def Creds	= "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd"
+  //def Creds ="c3VicmF0aXQ6U2FzbWl0YTEyMyo"
 
   stage('Checkout'){
       
