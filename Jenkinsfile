@@ -7,6 +7,12 @@ pipeline {
   }
   agent any
   stages {
+    stage(‘Checkout’) {
+       steps {
+         git "https://github.com/subrat82/dfly-app.git"
+         sh 'echo  "Sample checkout passed"'
+       }
+    }
     stage(‘Build’) {
        steps {
          sh 'echo  "Sample build passed"'
