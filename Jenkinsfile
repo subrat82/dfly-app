@@ -29,7 +29,7 @@ node{
       sh "/usr/local/bin/docker --version"
       sh "echo docker login localhost:8080"
       //withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
-     withDockerRegistry([credentialsId: "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd", url: 'https://hub.docker.com/']) {
+     withDockerRegistry([credentialsId: "076eed1a-ddda-4fcc-b8bd-5fbf6fa738fd", url: '']) {
       //sh 'docker login -u "subratit" -p "Sasmita123*" docker.io'
       //sh 'docker login --username=subratit --email=subratit@gmail.com docker.io'
      // sh 'docker login -u subratit docker.io'
