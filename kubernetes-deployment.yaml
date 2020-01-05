@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: dfly-label
+        app: dfly-app
     spec:
       containers:
       - name: dfly-container
