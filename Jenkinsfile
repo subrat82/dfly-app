@@ -26,7 +26,7 @@ node{
     }
 
   stage('Docker Build, Push'){
-      sh "/usr/local/bin/docker --version"
+      ish "/usr/local/bin/docker --version"
       sh "echo docker login localhost:8080"
       //withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
     
@@ -37,10 +37,10 @@ node{
       //sh 'docker login -u "subratit" -p "Sasmita123*" docker.io'
       //sh 'docker login --username=subratit --email=subratit@gmail.com docker.io'
      // sh 'docker login -u subratit docker.io'
-      sh 'docker login -u "subratit" -p "Sasmita123*" docker.io'
-      sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
+      //sh 'docker login -u "subratit" -p "Sasmita123*" docker.io'
+      //sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
       sh "echo build successfully"
-      sh "/usr/local/bin/docker push ${ImageName}"
+      //sh "/usr/local/bin/docker push ${ImageName}"
       //  }
     //}
 
