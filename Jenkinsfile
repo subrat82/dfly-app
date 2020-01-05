@@ -40,7 +40,7 @@ node{
       sh 'docker login -u "subratit" -p "Sasmita123*" docker.io'
       sh "/usr/local/bin/docker build -t ${ImageName}:${ImageTag} ."
       sh "echo build successfully"
-      //sh "/usr/local/bin/docker push ${ImageName}"
+      sh "/usr/local/bin/docker push ${ImageName}"
       //  }
     //}
 
